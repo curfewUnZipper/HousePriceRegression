@@ -45,5 +45,5 @@ print(f"coeff of determination: {r_sq}")
 print(f"intercept c= {model.intercept_}")
 print(f"slope m= {model.coef_}")"""
 
-a=float(input("Enter area in sqft: "))
+a=float(input("Enter area in sqft:(for example:3000) "))
 print(f"Price prediction in $: {model.predict(np.array([a]).reshape(-1,1))}")
