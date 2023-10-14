@@ -1,30 +1,11 @@
 #required libraries; run command on cmd
-#pip install numpy pandas matplotlib scikit-learn
-import numpy as np
+#pip install numpy pandas scikit-learn
 import pandas as pd
-import matplotlib.pyplot as plt
-#from sklearn import preprocessing, svm
-#from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression 
+import numpy as np
+from sklearn.linear_model import LinearRegression
 
-#mounting drive, used when in google colab
-#from google.colab import drive
-#drive.mount('/drive')
-
-import csv
-
-# Opeing csv and storing data
-f = open('data.csv', 'r') #change the path
-csvreader = csv.reader(f)
-headings = [] 
-rows = [] 
-headings=next(csvreader)
-for r in csvreader:
-    rows.append(r)
-
-#trial to see if loaded data is correct
-pd.DataFrame(rows,columns=headings)[0:9] 
-
+f = pd.read_csv("https://raw.githubusercontent.com/curfewUnZipper/HousePriceRegression/main/data.csv")
+head = list(f.columns)
 
 #Linear Regression
 
