@@ -26,24 +26,20 @@ for r in csvreader:
 pd.DataFrame(rows,columns=headings)[0:9] 
 
 
-#regression work
+#Linear Regression
 
-x= np.array([])
-for i in range(0,9):
-  x = np.append(x,float(rows[i][4]))
-x= x.reshape(-1,1)
+#x-axis - area (sq. ft.)
+x = np.array(f[head[4]]).reshape(-1,1)
+#print(x)
 
-y=np.array([])
-for i in range(0,9):
-  y=np.append(y,float(rows[i][1]))
-#y=y.reshape(-1,1) #2d inputs, give out 2d slope lol
+#y-axis
+y= np.array(f[head[1]])
+#print(y)
 
-model = LinearRegression()
-model.fit(x,y) #return self, i.e saved as model variable itself
-"""r_sq = model.score(x,y)
-print(f"coeff of determination: {r_sq}")
-print(f"intercept c= {model.intercept_}")
-print(f"slope m= {model.coef_}")"""
 
-a=float(input("Enter area in sqft:(for example:3000) "))
-print(f"Price prediction in $: {model.predict(np.array([a]).reshape(-1,1))}")
+#model
+model = LinearRegression().fit(x,y)
+print(model.score(x,y))
+
+a= int(input("Enter Area of house in sqft (Example: 3000) -> "))
+print(f"The price would be around: ${round(float(model.predict(np.array(a).reshape(-1,1))),2):,}")
